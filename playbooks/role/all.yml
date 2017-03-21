@@ -1,0 +1,16 @@
+---
+# Playbook conformite all hosts
+- name: "All host - conformity"
+  hosts: all
+  remote_user: bpr
+  sudo: yes
+  
+  tasks:
+    - name: "Update apt"
+      apt:
+        update_cache: yes
+
+- include: ../app/sshd/sshd.yml
+- include: ../app/vim/vim.yml
+- include: ../app/bash/bash.yml
+- include: ../app/screen/screen.yml

@@ -1,0 +1,10 @@
+---
+# Playbook de gestion de BASH
+- name: "BASH configuration"
+  hosts: all
+  remote_user: bpr
+  tasks:
+    - name: "BASH configuration"
+      template:
+        src=bashrc.j2
+        dest=~/.bashrc

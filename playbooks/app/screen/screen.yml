@@ -1,0 +1,12 @@
+---
+# Playbook de gestion de SCREEN
+- name: "Configuration SCREEN"
+  hosts: all
+  remote_user: bpr
+  sudo: yes
+
+  tasks:
+    - name: "Install SCREEN package"
+      apt:
+        name: screen
+        state: installed

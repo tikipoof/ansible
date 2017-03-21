@@ -1,0 +1,26 @@
+---
+- hosts: all
+  user: bpr
+  sudo: yes
+
+  tasks:
+  - name: "Install VIM package"
+    apt:
+      name: vim
+      state: present
+
+  - name: "Copy vim theme"
+    template:
+      src: basic-dark.vim.j2
+      dest: /usr/share/vim/vim74/colors/basic-dark.vim
+      backup: yes
+      owner: root
+      group: root
+
+  - name: "VIM configuration file"
+    template:
+      src: vim_config.j2
+      dest: ./.vimrc
+      backup: yes
+      owner: bpr
+      group: bpr

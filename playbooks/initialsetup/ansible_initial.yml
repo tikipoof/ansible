@@ -1,0 +1,15 @@
+---
+# Playbook initialisation Ansible on Debian minimal
+- name: "Ansible Debian initial setup"
+  hosts: ansible
+  remote_user: bpr
+  
+  tasks:
+    - name: "Update apt"
+      apt:
+        update_cache: yes
+
+    - name: "Install sshpass package"
+      apt:
+        name: sshpass
+        state: present
