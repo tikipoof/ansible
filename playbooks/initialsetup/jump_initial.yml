@@ -1,0 +1,16 @@
+---
+# Playbook initialisation Ansible on Debian minimal
+- name: "Jump Debian initial setup"
+  hosts: jump
+  remote_user: bpr
+  sudo: yes
+  
+  tasks:
+    - name: "Update apt"
+      apt:
+        update_cache: yes
+
+    - name: "Install httpie package"
+      apt:
+        name: httpie
+        state: present
