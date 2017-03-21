@@ -1,0 +1,10 @@
+localhost ansible_connection=local
+
+[jump]
+jumpny
+
+[ansible]
+ansible
+
+[new]
+debtst1
