@@ -6,5 +6,11 @@ jumpny
 [ansible]
 ansible
 
-[new]
+[postgresql]
 pgsql
+
+[radius]
+radiusny
+
+[domain]
+debdomain

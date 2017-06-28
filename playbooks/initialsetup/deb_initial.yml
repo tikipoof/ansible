@@ -13,9 +13,10 @@
       salt_size: 7
 
   tasks:
-    - name: "Update apt"
+    - name: "Update apt and Upgrade packages"
       apt:
         update_cache: yes
+        upgrade: dist
 
     - name: "Install sudo"
       apt:
@@ -35,3 +36,6 @@
         user: bpr
         state: present
         key: "{{ lookup('file', '/home/bpr/.ssh/authorized_keys') }}"
+
+- include: ../role/all.yml
+
