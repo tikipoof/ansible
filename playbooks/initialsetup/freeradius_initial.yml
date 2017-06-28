@@ -1,0 +1,44 @@
+---
+# Playbook initialisation Freeradius on Debian minimal
+- name: "Freeradius Debian initial setup"
+  hosts: radius
+  remote_user: bpr
+  sudo: yes
+
+#  vars_prompt:
+#    - name: "new_password"
+#      prompt: "Enter password for postgres user"
+#      private: yes
+#      encrypt: "md5_crypt"
+#      confirm: yes
+#      salt_size: 7
+
+  tasks:
+#    - name: "Update apt"
+#      apt:
+#        update_cache: yes
+
+    - name: "Install freeradius package"
+      apt:
+        name: freeradius
+        state: present
+
+#    - name: "Change password for postgres user"
+#      user:
+#        name: postgres
+#        shell: /sbin/nologin
+#        password: "{{new_password}}"
+
+#    - name: "Gathering pgsql configuration files"
+#      command: find /etc/postgresql -type f
+#      register: pgsqlconffiles
+
+#    - name: "Change owner and group for pgsql config and log file"
+#      file:
+#        path: "{{ item }}"
+#        owner: root
+#        group: root
+#        mode: 0644
+#      with_items: "pgsqlconffiles.stdout_lines"
+#        - "/etc/postgresql"
+#        - "/etc/postgresql/9.4/main/pg_hba.conf"
