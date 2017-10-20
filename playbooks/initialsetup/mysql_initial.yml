@@ -1,0 +1,44 @@
+---
+# Playbook initialisation Mysql on Debian minimal
+- name: "Mysql Debian initial setup"
+  hosts: mysql
+  remote_user: bpr
+  sudo: yes
+
+  vars_prompt:
+    - name: "new_password"
+      prompt: "Enter password for mysql user"
+      private: yes
+      encrypt: "md5_crypt"
+      confirm: yes
+      salt_size: 7
+
+  tasks:
+#    - name: "Update apt"
+#      apt:
+#        update_cache: yes
+
+    - name: "Install mysql package"
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: "Change password for mysql user"
+      user:
+        name: mysql
+        shell: /sbin/nologin
+        password: "{{new_password}}"
+
+#    - name: "Gathering pgsql configuration files"
+#      command: find /etc/postgresql -type f
+#      register: pgsqlconffiles
+
+#    - name: "Change owner and group for pgsql config and log file"
+#      file:
+#        path: "{{ item }}"
+#        owner: root
+#        group: root
+#        mode: 0644
+#      with_items: "pgsqlconffiles.stdout_lines"
+#        - "/etc/postgresql"
+#        - "/etc/postgresql/9.4/main/pg_hba.conf"
