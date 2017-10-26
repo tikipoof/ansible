@@ -9,22 +9,47 @@ git clone https://github.com/tikipoof/ansible.git
 cd ansible/
 ```
 
+## Use vault
+```
+mkdir host_vars
+ansible-vault create host_vars/ansible
+```
+
+Add the following lines
+```
+ansible_ssh_user: root
+#ansible_ssh_user: <username>
+ansible_ssh_pass: <password>
+#ansible_ssh_port: 5985
+#ansible_connection: winrm
+#ansible_winrm_scheme: http
+#ansible_winrm_server_cert_validation: ignore
+```
+
 Modifier hosts pour faire apparaitre ansible dans les new
+S'assurer que root peut se connecter en SSH en modifiant /etc/ssh/sshd_config
+```
+PermitRootLogin yes
+/etc/init.d/ssh reload
+```
+
+
 ```
 mkdir ~/.ssh
 ssh-keyscan ansible > ~/.ssh/known_hosts
-ansible-playbook playbooks/initialsetup/deb_initial.yml -i hosts -l new --ask-pass
+ansible-playbook playbooks/initialsetup/deb_initial.yml -i hosts -l ansible --ask-vault-pass
+#ansible-playbook playbooks/initialsetup/deb_initial.yml -i hosts -l new --ask-pass
 rm -rf ansible
 ```
 
-Depuis jumpny
+Depuis jump
 ```
 ssh bpr@ansible 'mkdir -m 700 -p .ssh'
 scp .ssh/authorized_keys bpr@ansible:.ssh/
 scp .ssh/id_rsa* bpr@ansible:.ssh/
 
-ssh ansible
-git clone https://github.com/tikipoof/ansible.git
+#ssh ansible
+#git clone https://github.com/tikipoof/ansible.git
 ```
 
 ## To run ansible against Windows
@@ -52,6 +77,7 @@ ansible -i winhosts srv01.bpr.lab -m win_ping --ask-vault-pass -vvvv
 ```
 mkdir host_vars
 ansible-vault create host_vars/jumpny
+#ansible-vault edit host_vars/jumpny
 ```
 
 Add the following lines

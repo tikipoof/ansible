@@ -12,7 +12,7 @@
   - name: "Copy vim theme"
     template:
       src: basic-dark.vim.j2
-      dest: /usr/share/vim/vim74/colors/basic-dark.vim
+      dest: /usr/share/vim/vim80/colors/basic-dark.vim
       backup: yes
       owner: root
       group: root

@@ -1,16 +1,10 @@
 localhost ansible_connection=local
 
-[jump]
-jumpny
+[adm]
+adm
 
 [ansible]
 ansible
 
-[postgresql]
-pgsql
-
-[radius]
-radiusny
-
-[domain]
-debdomain
+[new]
+adm
