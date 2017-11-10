@@ -6,5 +6,11 @@ adm
 [ansible]
 ansible
 
+[radius]
+radius
+
+[srvlab]
+srvlab
+
 [new]
-adm
+srvlab

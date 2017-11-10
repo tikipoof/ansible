@@ -18,8 +18,9 @@ ansible-vault create host_vars/ansible
 Add the following lines
 ```
 ansible_ssh_user: root
-#ansible_ssh_user: <username>
-ansible_ssh_pass: <password>
+#ansible_ssh_user: bpr
+ansible_ssh_pass: dT9stvhui
+#ansible_sudo_pass: dT9stvhui
 #ansible_ssh_port: 5985
 #ansible_connection: winrm
 #ansible_winrm_scheme: http
