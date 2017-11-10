@@ -3,6 +3,9 @@
 - name: "Ansible Debian initial setup"
   hosts: ansible
   remote_user: bpr
+  become: yes
+  become_user: root
+  become_method: sudo
   
   tasks:
     - name: "Update apt"
@@ -13,3 +16,10 @@
       apt:
         name: sshpass
         state: present
+
+    - name: "Disable retry files"
+      lineinfile:
+        name: /etc/ansible/ansible.cfg.2
+        regexp: ^ *retry_files_enabled = False
+        line: retry_files_enabled = False
+

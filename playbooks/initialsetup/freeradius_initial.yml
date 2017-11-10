@@ -3,7 +3,9 @@
 - name: "Freeradius Debian initial setup"
   hosts: radius
   remote_user: bpr
-  sudo: yes
+  become: yes
+  become_user: root
+  become_method: sudo
 
 #  vars_prompt:
 #    - name: "new_password"

@@ -1,7 +1,9 @@
 ---
 - hosts: all
-  user: bpr
-  sudo: yes
+  remote_user: bpr
+  become: yes
+  become_user: root
+  become_method: sudo
 
   tasks:
   - name: "Install VIM package"
@@ -20,7 +22,7 @@
   - name: "VIM configuration file"
     template:
       src: vim_config.j2
-      dest: ./.vimrc
+      dest: ~/.vimrc
       backup: yes
       owner: bpr
       group: bpr

@@ -18,8 +18,8 @@ ansible-vault create host_vars/ansible
 Add the following lines
 ```
 ansible_ssh_user: root
-#ansible_ssh_user: bpr
 ansible_ssh_pass: dT9stvhui
+#ansible_ssh_user: bpr
 #ansible_sudo_pass: dT9stvhui
 #ansible_ssh_port: 5985
 #ansible_connection: winrm
@@ -40,7 +40,6 @@ mkdir ~/.ssh
 ssh-keyscan ansible > ~/.ssh/known_hosts
 ansible-playbook playbooks/initialsetup/deb_initial.yml -i hosts -l ansible --ask-vault-pass
 #ansible-playbook playbooks/initialsetup/deb_initial.yml -i hosts -l new --ask-pass
-rm -rf ansible
 ```
 
 Depuis jump
